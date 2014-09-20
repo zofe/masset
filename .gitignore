@@ -3,5 +3,5 @@ composer.lock
 .DS_Store
 .idea
 index.html
-masset.php
+asset.php
 /assets

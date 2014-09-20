@@ -12,11 +12,14 @@ they are better solutions.
 I've made this stuff because I've some aged php project where I need only to speedup and increase SEO.
 
 
-### kudos to 
-- Tubal Martin for https://github.com/tubalmartin/YUI-CSS-compressor-PHP-port
-- Douglas Crockford for JSMin
-and a lot of people that worked on both project.
- 
+## Installation
+
+install via composer adding ```"zofe/masset": "dev-master"```
+
+### Laravel 
+
+to-do
+
 
 ### used standalone
 
@@ -58,3 +61,11 @@ if you used rewrite approach you need something like this in your htaccess
     RewriteRule ^masset/(.*).(css|js)$ /masset.php?files=$1&type=$2
     
 if you don't like commas as separator or "masset" as first segment you can easily change the configuration.
+
+
+
+### kudos to 
+- Tubal Martin for https://github.com/tubalmartin/YUI-CSS-compressor-PHP-port
+- Douglas Crockford for JSMin
+and a lot of people that worked on both project.
+ 

@@ -14,7 +14,7 @@ I've built this package because I have some old project which I nees to speedup 
 improve SEO.
 
 
-## Installation
+### Installation
 
 Install via composer adding ```"zofe/masset": "dev-master"```
 

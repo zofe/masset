@@ -2,15 +2,15 @@ masset
 ============
 
 A simple Javascript and Stylesheet minifier written in pure PHP.  
-Available on Composer, Mapper is a thin wrapper around PHPmin and CSSmin, and also adds
+Available on Composer, Masset is a thin wrapper around PHPmin and CSSmin, it also adds
 the ability to concat multiple files into one and cache them.
 The cache will be automatically cleaned every time you change
 your source files.
 
 ### There are alternatives
-Before using this package you should consider to use grunt/bower instead, as
+Before using this package you should consider to use grunt/gulpjs instead, as
 they are better solutions.
-I've built this package because I have some legact PHP project which I nees to speedup to 
+I've built this package because I have some old project which I nees to speedup to 
 improve SEO.
 
 
@@ -23,7 +23,7 @@ Install via composer adding ```"zofe/masset": "dev-master"```
 to-do
 
 
-### How to use it standalone
+### Used standalone
 
 write something like this into your html:
 
@@ -58,14 +58,14 @@ $masset->render();
 
 ```
 
-if you used the rewrite approach you need something like this in your `.htaccess`:
+If you used the rewrite approach you need something like this in your `.htaccess`:
 
     RewriteEngine On
     RewriteBase /
     RewriteRule ^masset/(.*).(css|js)$ /masset.php?files=$1&type=$2
     
-if you prefer not to use comma as the separator or "masset" as the first segment you 
-can easily change it the configuration.
+If you prefer not to use comma as the separator or "masset" as the first segment you 
+can easily fit your needs.
 
 ### Kudos to 
 - Tubal Martin for https://github.com/tubalmartin/YUI-CSS-compressor-PHP-port

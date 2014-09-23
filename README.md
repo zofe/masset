@@ -2,7 +2,7 @@ masset
 ============
 
 A simple Javascript and Stylesheet minifier written in pure PHP.  
-Available on Composer, Mapper is thin wrapper around PHPmin and CSSmin, and also adds
+Available on Composer, Mapper is a thin wrapper around PHPmin and CSSmin, and also adds
 the ability to concat multiple files into one and cache them.
 The cache will be automatically cleaned every time you change
 your source files.

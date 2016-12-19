@@ -1,16 +1,16 @@
-<?php namespace Zofe\Masset\Compressors;
+<?php
 
-    /*!
-     * cssmin.php rev 91c5ea5
-     * Author: Tubal Martin - http://blog.margenn.com/
-     * Repo: https://github.com/tubalmartin/YUI-CSS-compressor-PHP-port
-     *
-     * This is a PHP port of the Javascript port of the CSS minification tool
-     * distributed with YUICompressor, itself a port of the cssmin utility by
-     * Isaac Schlueter - http://foohack.com/
-     * Permission is hereby granted to use the PHP version under the same
-     * conditions as the YUICompressor.
-     */
+/*!
+ * cssmin.php rev 91c5ea5
+ * Author: Tubal Martin - http://blog.margenn.com/
+ * Repo: https://github.com/tubalmartin/YUI-CSS-compressor-PHP-port
+ *
+ * This is a PHP port of the Javascript port of the CSS minification tool
+ * distributed with YUICompressor, itself a port of the cssmin utility by
+ * Isaac Schlueter - http://foohack.com/
+ * Permission is hereby granted to use the PHP version under the same
+ * conditions as the YUICompressor.
+ */
 
 /*!
  * YUI Compressor
@@ -21,7 +21,7 @@
  * by Yahoo! Inc. under the BSD (revised) open source license.
  */
 
-class CSSMin
+class CSSmin
 {
     const NL = '___YUICSSMIN_PRESERVED_NL___';
     const TOKEN = '___YUICSSMIN_PRESERVED_TOKEN_';
@@ -321,11 +321,14 @@ class CSSMin
 
         // Fix for issue: #2528142
         // Replace text-shadow:0; with text-shadow:0 0 0;
-        $css = preg_replace('/(text-shadow\:0)(;|\})/ie', "strtolower('$1 0 0$2')", $css);
+        // The blow was modified to account for deprecation and removal (as of PHP7) of preg_replace() - /e modifier
+        $css = preg_replace('/(text-shadow\:0)(;|\})/ie', 
+                function($m) { return strtolower('$1 0 0$2');} , $css);
 
         // Replace background-position:0; with background-position:0 0;
         // same for transform-origin
-        $css = preg_replace('/(background\-position|(?:webkit|moz|o|ms|)\-?transform\-origin)\:0(;|\})/ieS', "strtolower('$1:0 0$2')", $css);
+        // The blow was modified to account for deprecation and removal (as of PHP7) of preg_replace() - /e modifier
+        $css = preg_replace('/(background\-position|(?:webkit|moz|o|ms|)\-?transform\-origin)\:0(;|\})/ieS', function($o){strtolower('$1:0 0$2');}, $css);
 
         // Shorten colors from rgb(51,102,153) to #336699, rgb(100%,0%,0%) to #ff0000 (sRGB color space)
         // Shorten colors from hsl(0, 100%, 50%) to #ff0000 (sRGB color space)
@@ -337,7 +340,8 @@ class CSSMin
         $css = $this->compress_hex_colors($css);
 
         // border: none to border:0, outline: none to outline:0
-        $css = preg_replace('/(border\-?(?:top|right|bottom|left|)|outline)\:none(;|\})/ieS', "strtolower('$1:0$2')", $css);
+        // The blow was modified to account for deprecation and removal (as of PHP7) of preg_replace() - /e modifier
+        $css = preg_replace('/(border\-?(?:top|right|bottom|left|)|outline)\:none(;|\})/ieS', function($n){ strtolower('$1:0$2'); }, $css);
 
         // shorter opacity IE filter
         $css = preg_replace('/progid\:DXImageTransform\.Microsoft\.Alpha\(Opacity\=/i', 'alpha(opacity=', $css);

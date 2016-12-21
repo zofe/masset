@@ -1,4 +1,4 @@
-<?php
+<?php namespace Zofe\Masset\Compressors;
 
 /*!
  * cssmin.php rev 91c5ea5
